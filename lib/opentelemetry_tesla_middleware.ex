@@ -1,18 +1,16 @@
-defmodule OpentelemetryTeslaMiddleware do
-  @moduledoc """
-  Documentation for `OpentelemetryTeslaMiddleware`.
-  """
+defmodule Tesla.Middleware.OpentelemetryTeslaMiddleware do
+  @behaviour Tesla.Middleware
 
-  @doc """
-  Hello world.
+  def call(env, next, _options) do
+    env
+    |> Tesla.put_headers(:otel_propagator.text_map_inject([]))
+    |> Tesla.run(next)
+    |> case do
+      {:ok, env} ->
+        env
 
-  ## Examples
-
-      iex> OpentelemetryTeslaMiddleware.hello()
-      :world
-
-  """
-  def hello do
-    :world
+      {:error, error} ->
+        {:error, error}
+    end
   end
 end
