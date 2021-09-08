@@ -4,8 +4,8 @@ defmodule OpentelemetryTeslaMiddleware.MixProject do
   def project do
     [
       app: :opentelemetry_tesla_middleware,
-      version: "0.1.0",
-      elixir: "~> 1.10",
+      version: "0.1.0-rc.1",
+      elixir: "~> 1.1",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
