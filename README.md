@@ -1,21 +1,23 @@
-# OpentelemetryTeslaMiddleware
+# OpenTelemetryTesla
 
-**TODO: Add description**
+[![Build Status](https://github.com/ricardoccpaiva/opentelemetry_tesla_middleware/actions/workflows/elixir.yml/badge.svg)](https://github.com/ricardoccpaiva/opentelemetry_tesla_middleware/actions)
+
+Tesla middleware that creates OpenTelemetry spans from Tesla HTTP client events.
 
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `opentelemetry_tesla_middleware` to your list of dependencies in `mix.exs`:
+by adding `opentelemetry_tesla` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
   [
-    {:opentelemetry_tesla_middleware, "~> 0.1.0"}
+    {:opentelemetry_tesla, "~> 0.1.0"}
   ]
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/opentelemetry_tesla_middleware](https://hexdocs.pm/opentelemetry_tesla_middleware).
+## Setup
+Add `Tesla.Middleware.OpentelemetryTeslaMiddleware` to the list of your Tesla middlewares.
 
+After this, spans will start to be created whenever a request is completed or if it eventually fails with some error.
