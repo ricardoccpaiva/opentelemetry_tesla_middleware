@@ -9,11 +9,7 @@ defmodule OpentelemetryTeslaMiddlewareTest do
       %{kind: :client}
     )
 
-    assert %Tesla.Env{
-             headers: [
-               {"traceparent", traceparent}
-             ]
-           } =
+    assert {:ok, %Tesla.Env{headers: [{"traceparent", traceparent}]}} =
              Tesla.Middleware.OpentelemetryTeslaMiddleware.call(
                %Tesla.Env{url: ""},
                [],
